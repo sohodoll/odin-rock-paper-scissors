@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* body and container */
+
+body {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier Prime', monospace;
+    user-select: none;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    cursor:default;
+}
+
+/* game stats */
+
+.user__choices,
+.game__stats {
+    display: flex;
+    gap: 4rem;
+    justify-content: space-between;
+}
+
+
+.game__stats_box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.winner {
+    height: 30px;
+}
+
+

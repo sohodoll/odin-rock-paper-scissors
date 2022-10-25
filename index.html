@@ -3,17 +3,39 @@
     <head>
         <meta charset="UTF-8">
         <title>Rock Paper Scissors Game</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./style.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        </style>
+
     </head>
     <body>
-        <p>User:</p>
-        <div class="user-count">0</div>
-        <p>Machine:</p>
-        <div class="machine-count">0</div>
-        <p>Draw:</p>
-        <div class="draw-count">0</div>
-        <p>Winner:</p>
-        <div class="final-winner"></div>
+        <div class="container">
+            <div class="user__choices">
+                <div class="user__choices_rock">ROCK</div>
+                <div class="user__choices_paper">PAPER</div>
+                <div class="user__choices_scissors">SCISSORS</div>
+            </div>
+            <div class="game__stats">
+                <div class="game__stats_box user">
+                    <div class="user__title">User:</div>
+                    <div class="user__count"></div>
+                </div>
+                <div class="game__stats_box machine">
+                    <div class="machine__title">Machine:</div>
+                    <div class="machine__count"></div>
+                </div>
+                <div class="game__stats_box round">
+                    <div class="round__title">Rounds left:</div>
+                    <div class="round__count"></div>
+                </div> 
+            </div>
+            <div class="game__stats_box winner">
+                <div class="winer__title">Winner:</div>
+                <div class="winner__result"></div>
+            </div>
+        </div> 
         <script src="./script.js" ></script>
     </body>
 </html>
