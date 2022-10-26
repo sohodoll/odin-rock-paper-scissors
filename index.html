@@ -11,11 +11,20 @@
 
     </head>
     <body>
+        <div class="red-overlay"></div>
+        <div class="green-overlay"></div>
         <div class="container">
+            <div class="fighter">CHOOSE YOUR FIGHTER</div>
             <div class="user__choices">
-                <div class="user__choices_rock">ROCK</div>
-                <div class="user__choices_paper">PAPER</div>
-                <div class="user__choices_scissors">SCISSORS</div>
+                <div class="user__choices_rock">
+                    <img src="./homer-rock.gif" alt="rock">
+                </div>
+                <div class="user__choices_paper">
+                    <img src="./homer-paper.gif" alt="rock">
+                </div>
+                <div class="user__choices_scissors">
+                    <img src="./home-scissors.gif" alt="rock">
+                </div>
             </div>
             <div class="game__stats">
                 <div class="game__stats_box user">
@@ -26,13 +35,17 @@
                     <div class="machine__title">Machine:</div>
                     <div class="machine__count"></div>
                 </div>
+                <div class="game__stats_box draw">
+                    <div class="draw__title">Draws:</div>
+                    <div class="draw__count"></div>
+                </div>
                 <div class="game__stats_box round">
                     <div class="round__title">Rounds left:</div>
                     <div class="round__count"></div>
                 </div> 
             </div>
             <div class="game__stats_box winner">
-                <div class="winer__title">Winner:</div>
+                <div class="winer__title"></div>
                 <div class="winner__result"></div>
             </div>
         </div> 

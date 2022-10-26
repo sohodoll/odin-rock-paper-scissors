@@ -25,6 +25,8 @@ choiceArray.push(ROCK, PAPER, SCISSORS);
 
 const userScoreElement = document.querySelector('.user__count');
 const machineScoreElement = document.querySelector('.machine__count');
+const drawElement = document.querySelector('.draw__count');
+const winnerBox = document.querySelector('.winner');
 const winnerElement = document.querySelector('.winner__result');
 const roundsElement = document.querySelector('.round__count');
 
@@ -33,6 +35,7 @@ const updateScores = () => {
     machineScoreElement.textContent = `${machineScore}`;
     winnerElement.textContent = `${winner}`;
     roundsElement.textContent = `${roundCount}`;
+    drawElement.textContent = `${drawCount}`;
 }
 
 updateScores();
@@ -67,6 +70,8 @@ const getRandomIndex = () => {
 const machineWinAnnounce = () => {
     roundCount--;
     machineScore++;
+    animateRedOverlay();
+    dohAudio.play();
     updateScores();
     console.log(`Machine wins(as always)! ${machineChoice} beats ${userChoice}!`, machineChoice, userChoice);
 }
@@ -74,6 +79,8 @@ const machineWinAnnounce = () => {
 const userWinAnnounce = () => {
     roundCount--;
     userScore++;
+    animateGreenOverlay();
+    wooAudio.play();
     updateScores();
     console.log(`User wins (how is that possible?!) ${userChoice} beats ${machineChoice}!`, userChoice, machineChoice);
 }
@@ -81,6 +88,8 @@ const userWinAnnounce = () => {
 const drawAnnounce = () => {
     roundCount--;
     drawCount++;
+    animateRedOverlay();
+    dohAudio.play();
     updateScores();
     console.log('hmm..That\'s a draw! Start again', userChoice, machineChoice);
 }
@@ -136,6 +145,7 @@ const game = () => {
     rockPaperScissors()
     if (winner == 'machine' || winner == 'user' || winner == 'draw') return;
     else if (roundCount == 0) {
+        animateWinner();
         if (machineScore > userScore) {
             winner = 'machine';
             winnerElement.textContent = ' The final winner is the machine (did you expect anything else?)';
@@ -150,6 +160,42 @@ const game = () => {
         }
     }
 }   
+
+// animations
+
+const gameStatsElement = document.querySelector('.game__stats');
+const userChoicesElement = document.querySelector('.user__choices');
+const redOverlay = document.querySelector('.red-overlay');
+const greenOverlay = document.querySelector('.green-overlay');
+
+const animateWinner = () => {
+    winnerBox.style.opacity = '1';
+}
+
+const animateRedOverlay = () => {
+    redOverlay.style.opacity = '1';
+    redOverlay.style.visibility = 'visible';
+    setTimeout(() => {
+        redOverlay.style.opacity = '0';
+        redOverlay.style.visibility = 'hidden';
+    }, 150)
+}
+
+const animateGreenOverlay = () => {
+    greenOverlay.style.opacity = '1';
+    greenOverlay.style.visibility = 'visible';
+    setTimeout(() => {
+        greenOverlay.style.opacity = '0';
+        greenOverlay.style.visibility = 'hidden';
+    }, 150)
+}
+
+//sound FX
+
+const dohAudio = new Audio('./homer-doh.mp3');
+const wooAudio = new Audio('./homer-woohoo.mp3');
+
+
 
 
 

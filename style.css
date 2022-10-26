@@ -17,7 +17,7 @@ body {
 }
 
 .container {
-    max-width: 400px;
+    max-width: 900px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -25,13 +25,44 @@ body {
     cursor:default;
 }
 
+/* TITLE */
+
+.fighter {
+    font-weight: 700;
+    font-size: 40px;
+    text-align: center;
+}
+
 /* game stats */
 
-.user__choices,
-.game__stats {
+.user__choices {
     display: flex;
     gap: 4rem;
     justify-content: space-between;
+}
+
+.game__stats {
+    flex-direction: column;
+}
+
+.user__choices_rock,
+.user__choices_paper,
+.user__choices_scissors {
+    
+}
+.user__choices img {
+    width: 270px;
+    height: 270px;
+    cursor: pointer;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.37);
+    transition: width height 0.1s;
+}
+
+.user__choices img:active {
+    scale: 0.98;
+    box-shadow: none;
 }
 
 
@@ -42,6 +73,31 @@ body {
 
 .winner {
     height: 30px;
+    opacity: 0;
+    font-size: 20px;
+    transition: 3s;
+}
+
+/* overlays */
+
+.red-overlay {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0.315);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.1s linear;
+}
+
+.green-overlay {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(22, 192, 16, 0.315);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.1s linear;
 }
 
 
