@@ -13,6 +13,7 @@ let winner = '..?'
 let machineScore = 0;
 let drawCount = 0;
 let singleResult;
+let announceMsg = '';
 
 
 const ROCK = 'rock';
@@ -29,6 +30,7 @@ const drawElement = document.querySelector('.draw__count');
 const winnerBox = document.querySelector('.winner');
 const winnerElement = document.querySelector('.winner__result');
 const roundsElement = document.querySelector('.round__count');
+const announceMessageElement = document.querySelector('.announce__message');
 
 const updateScores = () => {
     userScoreElement.textContent = `${userScore}`;
@@ -36,6 +38,7 @@ const updateScores = () => {
     winnerElement.textContent = `${winner}`;
     roundsElement.textContent = `${roundCount}`;
     drawElement.textContent = `${drawCount}`;
+    announceMessageElement.textContent = `${announceMsg}`;
 }
 
 updateScores();
@@ -70,28 +73,28 @@ const getRandomIndex = () => {
 const machineWinAnnounce = () => {
     roundCount--;
     machineScore++;
+    announceMsg = `User chose ${userChoice}. Machine went for ${machineChoice}. Machine wins(as always)!`;
     animateRedOverlay();
     dohAudio.play();
     updateScores();
-    console.log(`Machine wins(as always)! ${machineChoice} beats ${userChoice}!`, machineChoice, userChoice);
 }
 
 const userWinAnnounce = () => {
     roundCount--;
     userScore++;
+    announceMsg = `User chose ${userChoice}. Machine went for ${machineChoice}. User wins (how is that possible?!)`
     animateGreenOverlay();
     wooAudio.play();
-    updateScores();
-    console.log(`User wins (how is that possible?!) ${userChoice} beats ${machineChoice}!`, userChoice, machineChoice);
+    updateScores()
 }
 
 const drawAnnounce = () => {
     roundCount--;
     drawCount++;
+    announceMsg = `User chose ${userChoice}. Machine also went for ${machineChoice}. Hmm...that's a draw!`;
     animateRedOverlay();
     dohAudio.play();
     updateScores();
-    console.log('hmm..That\'s a draw! Start again', userChoice, machineChoice);
 }
 
 const rockPaperScissors = () => {
@@ -167,10 +170,36 @@ const gameStatsElement = document.querySelector('.game__stats');
 const userChoicesElement = document.querySelector('.user__choices');
 const redOverlay = document.querySelector('.red-overlay');
 const greenOverlay = document.querySelector('.green-overlay');
+const mainTitle = document.querySelector('.fighter');
+const choicesGrid = document.querySelector('.user__choices');
+const announceELement = document.querySelector('.announce');
+const roundsDiv = document.querySelector('.round');
 
 const animateWinner = () => {
-    winnerBox.style.opacity = '1';
-}
+    setTimeout(() => {
+        mainTitle.style.opacity = '0';
+        mainTitle.style.visibility = 'hidden';
+        setTimeout(() => {
+            choicesGrid.style.opacity = '0';
+            choicesGrid.style.visibility = 'hidden';
+            setTimeout(() => {
+                gameStatsElement.style.opacity = '0';
+                gameStatsElement.style.visibility = 'hidden';
+                setTimeout(() => {
+                    announceELement.style.opacity = '0';
+                    announceELement.style.visibility = 'hidden';
+                    setTimeout(() => {
+                        roundsDiv.style.opacity = '0';
+                        roundsDiv.style.visibility = 'hidden';
+                        setTimeout(() => {
+                                winnerBox.style.opacity = '1';
+                            }, 450)
+                        }, 450)
+                    }, 450)
+                }, 450)
+            }, 450)
+        }, 450)
+    }
 
 const animateRedOverlay = () => {
     redOverlay.style.opacity = '1';
@@ -193,7 +222,12 @@ const animateGreenOverlay = () => {
 //sound FX
 
 const dohAudio = new Audio('./homer-doh.mp3');
+dohAudio.volume = 0.1;
 const wooAudio = new Audio('./homer-woohoo.mp3');
+wooAudio.volume = 0.1;
+
+// round announce
+
 
 
 
