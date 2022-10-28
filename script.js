@@ -226,7 +226,13 @@ dohAudio.volume = 0.1;
 const wooAudio = new Audio('./homer-woohoo.mp3');
 wooAudio.volume = 0.1;
 
-// round announce
+// reload button 
+
+const reloadButton = document.querySelector('.winner__reload');
+
+const reload = () => window.location = window.location;
+
+reloadButton.addEventListener('click', reload);
 
 
 
