@@ -50,11 +50,6 @@ body {
     transition: 0.35s;
 }
 
-.user__choices_rock,
-.user__choices_paper,
-.user__choices_scissors {
-    
-}
 .user__choices img {
     width: 270px;
     height: 270px;
@@ -99,6 +94,10 @@ body {
     gap: 2rem;
 }
 
+.winner__result {
+    text-align: center;
+}
+
 .winner__reload {
     background-image: url(./reload.png);
     background-size: cover;
@@ -126,6 +125,10 @@ body {
     transition: 0.35s;
 }
 
+.announce__message {
+    text-align: center;
+}
+
 /* overlays */
 
 .red-overlay {
@@ -148,19 +151,34 @@ body {
     transition: visibility 0s, opacity 0.1s linear;
 }
 
+/* adaptive */
+
 @media only screen and (max-width: 1200px) {
 
    .user__choices img {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
    }
 
   }
 
 @media only screen and (max-width: 700px) {
 
+    .container {
+        gap: 1rem;
+    }
+
     .user__choices {
-         flex-direction: column;
+         gap: 1rem;
+    }
+
+    .winner {
+        z-index: 1;
+    }
+
+    .user__choices img {
+        position: relative;
+        z-index: 10;
     }
  
    }
